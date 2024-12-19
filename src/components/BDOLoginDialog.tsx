@@ -10,11 +10,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 
 export const BDOLoginDialog = ({ blockName }: { blockName: string }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { toast } = useToast();
+  const { user } = useAuth();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,6 +29,18 @@ export const BDOLoginDialog = ({ blockName }: { blockName: string }) => {
       description: `Attempted login for Block ${blockName}`,
     });
   };
+
+  if (!user) {
+    return (
+      <Button 
+        variant="outline" 
+        className="w-full justify-start opacity-50 cursor-not-allowed"
+        disabled
+      >
+        {blockName} (Please login as DM first)
+      </Button>
+    );
+  }
 
   return (
     <Dialog>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const Index = () => {
+const Subdivision = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -8,11 +8,11 @@ const Index = () => {
       className="min-h-screen pt-16 px-4"
     >
       <div className="max-w-7xl mx-auto py-6">
-        <h1 className="text-3xl font-bold">Welcome to DM Portal</h1>
-        <p className="mt-4">Select an option from the navigation menu to get started.</p>
+        <h1 className="text-3xl font-bold">Subdivision</h1>
+        <p className="mt-4">Subdivision content will go here.</p>
       </div>
     </motion.div>
   );
 };
 
-export default Index;
+export default Subdivision;

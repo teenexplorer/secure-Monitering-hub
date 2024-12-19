@@ -13,20 +13,21 @@ import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 
 export const BDOLoginDialog = ({ blockName }: { blockName: string }) => {
+  const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { toast } = useToast();
   const { user } = useAuth();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(`Attempting BDO login for block ${blockName}`);
+    console.log(`Attempting BDO ${isLogin ? 'login' : 'signup'} for block ${blockName}`);
     console.log(`Username: ${username}`);
     
-    // Here you would typically handle the BDO login logic
+    // Here you would typically handle the BDO login/signup logic
     toast({
-      title: "Login Attempt",
-      description: `Attempted login for Block ${blockName}`,
+      title: isLogin ? "Login Attempt" : "Signup Attempt",
+      description: `Attempted ${isLogin ? 'login' : 'signup'} for Block ${blockName}`,
     });
   };
 
@@ -51,9 +52,9 @@ export const BDOLoginDialog = ({ blockName }: { blockName: string }) => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>BDO Login - {blockName}</DialogTitle>
+          <DialogTitle>BDO {isLogin ? "Login" : "Sign Up"} - {blockName}</DialogTitle>
         </DialogHeader>
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="username">Username</Label>
             <Input
@@ -74,8 +75,17 @@ export const BDOLoginDialog = ({ blockName }: { blockName: string }) => {
             />
           </div>
           <Button type="submit" className="w-full">
-            Login
+            {isLogin ? "Login" : "Sign Up"}
           </Button>
+          <div className="text-center">
+            <button
+              type="button"
+              onClick={() => setIsLogin(!isLogin)}
+              className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
+            >
+              {isLogin ? "Need an account? Sign up" : "Already have an account? Sign in"}
+            </button>
+          </div>
         </form>
       </DialogContent>
     </Dialog>

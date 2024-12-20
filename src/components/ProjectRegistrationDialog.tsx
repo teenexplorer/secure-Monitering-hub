@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -18,6 +19,7 @@ interface ProjectRegistrationProps {
 }
 
 export const ProjectRegistrationDialog = ({ isOpen, onClose, blockName }: ProjectRegistrationProps) => {
+  const navigate = useNavigate();
   const [beneficiaryName, setBeneficiaryName] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [address, setAddress] = useState("");
@@ -39,6 +41,7 @@ export const ProjectRegistrationDialog = ({ isOpen, onClose, blockName }: Projec
       description: "Project details have been saved",
     });
     onClose();
+    navigate("/gp-list");
   };
 
   return (

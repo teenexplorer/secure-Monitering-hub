@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const GPAssignment = () => {
-  const [inspectors, setInspectors] = useState(Array(6).fill(""));
+  const [inspectors, setInspectors] = useState(Array(4).fill(""));
 
   const handleInspectorChange = (index: number, value: string) => {
     const newInspectors = [...inspectors];
@@ -13,22 +14,24 @@ export const GPAssignment = () => {
   };
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold">GP Assignments</h3>
-      {Array.from({ length: 6 }, (_, i) => (
-        <div key={i} className="flex items-center gap-4">
-          <div className="w-24">
-            <Label>GP {i + 1}</Label>
+    <ScrollArea className="h-[300px] pr-4">
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">GP Assignments</h3>
+        {Array.from({ length: 4 }, (_, i) => (
+          <div key={i} className="flex items-center gap-4">
+            <div className="w-24">
+              <Label>GP {i + 1}</Label>
+            </div>
+            <div className="flex-1">
+              <Input
+                placeholder="Name of Inspector"
+                value={inspectors[i]}
+                onChange={(e) => handleInspectorChange(i, e.target.value)}
+              />
+            </div>
           </div>
-          <div className="flex-1">
-            <Input
-              placeholder="Name of Inspector"
-              value={inspectors[i]}
-              onChange={(e) => handleInspectorChange(i, e.target.value)}
-            />
-          </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </ScrollArea>
   );
 };

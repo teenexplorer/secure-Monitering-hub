@@ -14,12 +14,12 @@ export const GPAssignment = () => {
   };
 
   return (
-    <ScrollArea className="h-[300px] pr-4">
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold">GP Assignments</h3>
+    <ScrollArea className="h-[300px] w-full pr-4">
+      <div className="space-y-4 p-4">
+        <h3 className="text-lg font-semibold mb-6">GP Assignments</h3>
         {Array.from({ length: 4 }, (_, i) => (
-          <div key={i} className="flex items-center gap-4">
-            <div className="w-24">
+          <div key={i} className="flex items-center gap-4 mb-4">
+            <div className="w-24 flex-shrink-0">
               <Label>GP {i + 1}</Label>
             </div>
             <div className="flex-1">

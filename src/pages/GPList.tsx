@@ -7,8 +7,8 @@ const GPList = () => {
 
   return (
     <div className="min-h-screen p-8">
-      <ScrollArea className="h-[calc(100vh-200px)]">
-        <div className="space-y-4">
+      <ScrollArea className="h-[calc(100vh-200px)] w-full">
+        <div className="space-y-4 p-4">
           {Array.from({ length: 4 }, (_, i) => (
             <Button
               key={i}

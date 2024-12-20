@@ -11,6 +11,8 @@ import Login from "./pages/Login";
 import Reports from "./pages/Reports";
 import Adm from "./pages/Adm";
 import Subdivision from "./pages/Subdivision";
+import GPList from "./pages/GPList";
+import GPQuestionnaire from "./pages/GPQuestionnaire";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +55,22 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <Subdivision />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/gp-list"
+              element={
+                <ProtectedRoute>
+                  <GPList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/gp-questionnaire/:gpId"
+              element={
+                <ProtectedRoute>
+                  <GPQuestionnaire />
                 </ProtectedRoute>
               }
             />

@@ -4,7 +4,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Subdivision = () => {
   const subdivisions = Array.from({ length: 4 }, (_, i) => `Subdivision ${i + 1}`);
-  const gpsPerSubdivision = Array.from({ length: 10 }, (_, i) => `GP ${i + 1}`);
+  const blocksPerSubdivision = Array.from({ length: 10 }, (_, i) => `Block ${i + 1}`);
 
   return (
     <motion.div
@@ -24,10 +24,10 @@ const Subdivision = () => {
               >
                 <h2 className="text-xl font-semibold mb-4">{subdivisionName}</h2>
                 <div className="space-y-2">
-                  {gpsPerSubdivision.map((gpName) => (
+                  {blocksPerSubdivision.map((blockName) => (
                     <BDOLoginDialog 
-                      key={`${subdivisionName}-${gpName}`} 
-                      blockName={`${subdivisionName} - ${gpName}`}
+                      key={`${subdivisionName}-${blockName}`} 
+                      blockName={`${subdivisionName} - ${blockName}`}
                     />
                   ))}
                 </div>
